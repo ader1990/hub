@@ -2,10 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
-	"path/filepath"
-	"syscall"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -31,7 +28,7 @@ var rebootCmd = &cobra.Command{
 
 // Execute - starts the command parsing process.
 func Execute() {
-	if err := reboot.Execute(); err != nil {
+	if err := rebootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
