@@ -12,5 +12,5 @@ RUN --mount=type=cache,sharing=locked,id=gomod,target=/go/pkg/mod/cache \
 
 # Build final image
 FROM scratch
-COPY --from=reboot /go/src/github.com/ader1990/hub/actions/kexec/v1/reboot/reboot .
+COPY --from=reboot /go/src/github.com/ader1990/hub/actions/reboot/v1/reboot/reboot .
 ENTRYPOINT ["/reboot"]

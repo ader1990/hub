@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"os/exec"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -18,11 +19,21 @@ const mountAction = "/mountAction"
 var rebootCmd = &cobra.Command{
 	Use:   "reboot",
 	Short: "This is an action for performing a reboot",
-	Run: func(cmd *cobra.Command, args []string) {
+	Run: func(cmd1 *cobra.Command, args []string) {
 
-		log.Infof("Running reboot")
-		// Load the kernel configuration into memory
 		log.Info("Rebooting system")
+		var defaultCommand = "reboot"
+		cmd := exec.Command(defaultCommand)
+		cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, os.Stdout, os.Stderr
+		err := cmd.Start()
+		if err != nil {
+			log.Fatalf("Error starting [%s] [%v]", defaultCommand, err)
+		}
+		err = cmd.Wait()
+		if err != nil {
+			log.Fatalf("Error running [%s] [%v]", defaultCommand, err)
+		}
+
 	},
 }
 
