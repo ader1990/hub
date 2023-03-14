@@ -11,6 +11,6 @@ RUN --mount=type=cache,sharing=locked,id=gomod,target=/go/pkg/mod/cache \
     CGO_ENABLED=1 GOOS=linux go build -a -ldflags "-linkmode external -extldflags '-static' -s -w" -o reboot
 
 # Build final image
-FROM scratch
+FROM alpine:3.17.2
 COPY --from=reboot /go/src/github.com/ader1990/hub/actions/reboot/v1/reboot/reboot .
 ENTRYPOINT ["/reboot"]
