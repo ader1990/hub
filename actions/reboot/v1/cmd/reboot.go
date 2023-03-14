@@ -21,7 +21,7 @@ var rebootCmd = &cobra.Command{
 	Short: "This is an action for performing a reboot",
 	Run: func(cmd1 *cobra.Command, args []string) {
 
-		log.Info("Rebooting system")
+		log.Info("Rebooting system now")
 		var defaultCommand = "reboot"
 		cmd := exec.Command(defaultCommand, "-d", "10")
 		cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, os.Stdout, os.Stderr
