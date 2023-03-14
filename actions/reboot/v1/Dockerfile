@@ -12,5 +12,6 @@ RUN --mount=type=cache,sharing=locked,id=gomod,target=/go/pkg/mod/cache \
 
 # Build final image
 FROM alpine:3.17.2
+
 COPY --from=reboot /go/src/github.com/ader1990/hub/actions/reboot/v1/reboot/reboot .
 ENTRYPOINT ["/reboot"]

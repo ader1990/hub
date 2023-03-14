@@ -22,8 +22,8 @@ var rebootCmd = &cobra.Command{
 	Run: func(cmd1 *cobra.Command, args []string) {
 
 		log.Info("Rebooting system")
-		var defaultCommand = "shutdown"
-		cmd := exec.Command(defaultCommand, "-r", "+1")
+		var defaultCommand = "reboot"
+		cmd := exec.Command(defaultCommand, "-d", "10")
 		cmd.Stdin, cmd.Stdout, cmd.Stderr = os.Stdin, os.Stdout, os.Stderr
 		err := cmd.Start()
 		if err != nil {
