@@ -1,4 +1,4 @@
-module github.com/tinkerbell/hub/actions/kexec/v1
+module github.com/ader1990/hub/actions/reboot/v1
 
 go 1.15
 
